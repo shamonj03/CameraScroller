@@ -7,6 +7,7 @@ import com.joe.engine.graphics.renderable.Screen;
 import com.joe.engine.input.InputAction;
 import com.joe.engine.input.Keyboard;
 import com.joe.engine.model.Direction;
+import com.joe.game.model.Chunk;
 import com.joe.game.model.World;
 import com.joe.game.model.entity.Creature;
 
@@ -38,6 +39,17 @@ public class Player extends Creature {
 	public void update() {
 		getLocation().offsetX(getDirection().getXOffset());
 		getLocation().offsetY(getDirection().getYOffset());
+		
+		Chunk center = World.getMap().getCenterChunk();
+		
+		int localX = (int) (getLocation().getX() - center.getData().getRealX());
+		int localY = (int) (getLocation().getY() - center.getData().getRealY());
+		
+		if(localX < 0 ||localY< 0
+			|| localX > 256 || localY > 256) {
+				System.out.println(localX + " " + localY);
+				World.getMap().load(getLocation());
+		}
 	}
 
 	/**

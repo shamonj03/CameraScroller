@@ -3,26 +3,37 @@ package com.joe.game.model;
 import com.joe.engine.graphics.color.RGB16BitInteger;
 import com.joe.engine.graphics.renderable.Screen;
 import com.joe.game.io.data.ChunkData;
+import com.joe.game.io.data.MapData;
 import com.joe.game.util.Constants;
 
 public class Chunk {
 
 	/**
-	 * The data within the definition.
+	 * The map data within the definition.
+	 * This definition contains location of chunks in the
+	 * world.
 	 */
-	private ChunkData data;
+	private MapData mapData;
+	
+	/**
+	 * The chunk data in the definition.
+	 * This definition contains the location of
+	 * tiles and such in the chunk.
+	 */
+	private ChunkData chunkData;
 
 	/**
 	 * Creates a new chunk based on the data in the definition.
 	 * 
-	 * @param data
+	 * @param mapData
 	 */
-	public Chunk(ChunkData data) {
-		this.data = data;
+	public Chunk(MapData mapData) {
+		this.mapData = mapData;
 
-		if (data.getId() == -1)
+		if (mapData.getId() == -1)
 			return;
-		System.out.println("Found chunk " + data.getId());
+		
+		chunkData = Constants.CHUNK_DEFINITION.retrive(mapData.getId());
 	}
 
 	/**
@@ -32,7 +43,7 @@ public class Chunk {
 	 *            The screen to draw to.
 	 */
 	public void draw(Screen screen) {
-		if (data.getId() == -1)
+		if (mapData.getId() == -1)
 			return;
 
 		drawTiles(screen);
@@ -48,8 +59,8 @@ public class Chunk {
 	private void drawTiles(Screen screen) {
 		for (int localY = 0; localY < Constants.CHUNK_REAL_SIZE; localY += Constants.TILE_SIZE) {
 			for (int localX = 0; localX < Constants.CHUNK_REAL_SIZE; localX += Constants.TILE_SIZE) {
-				int realX = data.getRealX() + localX;
-				int realY = data.getRealY() + localY;
+				int realX = mapData.getRealX() + localX;
+				int realY = mapData.getRealY() + localY;
 
 				int screenX = World.getCamera().getPositionXOnScreen(screen,
 						realX);
@@ -70,19 +81,25 @@ public class Chunk {
 	 */
 	private void drawChunkBorders(Screen screen) {
 		int screenX = World.getCamera().getPositionXOnScreen(screen,
-				data.getRealX());
+				mapData.getRealX());
 		int screenY = World.getCamera().getPositionYOnScreen(screen,
-				data.getRealY());
+				mapData.getRealY());
 
 		screen.drawRectangle(RGB16BitInteger.BLUE, screenX, screenY,
 				Constants.CHUNK_REAL_SIZE, Constants.CHUNK_REAL_SIZE);
 	}
 
 	/**
-	 * 
+	 * @return the map data in the definition.
+	 */
+	public MapData getData() {
+		return mapData;
+	}
+	
+	/**
 	 * @return the chunk data in the definition.
 	 */
-	public ChunkData getData() {
-		return data;
+	public ChunkData getChunkData() {
+		return chunkData;
 	}
 }

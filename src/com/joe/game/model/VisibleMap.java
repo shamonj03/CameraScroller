@@ -2,7 +2,7 @@ package com.joe.game.model;
 
 import com.joe.engine.graphics.renderable.Screen;
 import com.joe.engine.model.Location;
-import com.joe.game.io.data.ChunkData;
+import com.joe.game.io.data.MapData;
 import com.joe.game.util.Constants;
 
 public class VisibleMap {
@@ -36,7 +36,7 @@ public class VisibleMap {
 					continue;
 				}
 
-				ChunkData data = Constants.MAP_DEFINITION.forId(chunkX + (chunkY * Constants.MAP_DEFINITION.getWidth()));
+				MapData data = Constants.MAP_DEFINITION.retrive(chunkX + (chunkY * Constants.MAP_DEFINITION.getWidth()));
 				
 				visibleChunks[(xOffset + 1) + ((yOffset + 1) * 3)] = new Chunk(data);
 			}
@@ -62,5 +62,12 @@ public class VisibleMap {
 	 */
 	public Chunk[] getVisibleChunks() {
 		return visibleChunks;
+	}
+	
+	/**
+	 * @return the chunk in the center of the visible map.
+	 */
+	public Chunk getCenterChunk(){
+		return visibleChunks[4];
 	}
 }

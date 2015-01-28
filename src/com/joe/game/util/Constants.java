@@ -1,5 +1,6 @@
 package com.joe.game.util;
 
+import com.joe.game.io.definition.ChunkDefinition;
 import com.joe.game.io.definition.MapDefinition;
 
 public class Constants {
@@ -30,4 +31,6 @@ public class Constants {
 	 * TODO: Maybe move this to game?
 	 */
 	public static final MapDefinition MAP_DEFINITION = new MapDefinition();
+	
+	public static final ChunkDefinition CHUNK_DEFINITION = new ChunkDefinition();
 }

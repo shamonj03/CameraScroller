@@ -19,7 +19,7 @@ public class World {
 	/**
 	 * The local map we can see.
 	 */
-	private VisibleMap map;
+	private static VisibleMap map;
 	
 	
 	/**
@@ -29,6 +29,7 @@ public class World {
 		player = new Player();
 		camera = new Camera(player.getLocation(), player.getWidth(), player.getHeight());
 		map = new VisibleMap(player.getLocation());
+	
 	}
 
 	/**
@@ -63,5 +64,12 @@ public class World {
 	 */
 	public static Camera getCamera() {
 		return camera;
+	}
+	
+	/**
+	 * @return the visible map.
+	 */
+	public static VisibleMap getMap() {
+		return map;
 	}
 }
