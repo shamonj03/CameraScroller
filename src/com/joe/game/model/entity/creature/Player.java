@@ -44,33 +44,35 @@ public class Player extends Creature {
 	 * Set the key bindings to use for the character
 	 */
 	private void setKeyBindings() {
-		Keyboard.addPressedAction(new InputAction<KeyEvent>() {
-			@Override
-			public void actionPerformed(KeyEvent event) {
-				int key = event.getKeyCode();
+		Keyboard.getPressedActions().register("playerMovement",
+				new InputAction<KeyEvent>() {
+					@Override
+					public void actionPerformed(KeyEvent event) {
+						int key = event.getKeyCode();
 
-				if (key == KeyEvent.VK_W) {
-					setDirection(Direction.NORTH);
-				} else if (key == KeyEvent.VK_S) {
-					setDirection(Direction.SOUTH);
-				} else if (key == KeyEvent.VK_D) {
-					setDirection(Direction.EAST);
-				} else if (key == KeyEvent.VK_A) {
-					setDirection(Direction.WEST);
-				}
-			}
-		});
+						if (key == KeyEvent.VK_W) {
+							setDirection(Direction.NORTH);
+						} else if (key == KeyEvent.VK_S) {
+							setDirection(Direction.SOUTH);
+						} else if (key == KeyEvent.VK_D) {
+							setDirection(Direction.EAST);
+						} else if (key == KeyEvent.VK_A) {
+							setDirection(Direction.WEST);
+						}
+					}
+				});
 
-		Keyboard.addReleasedAction(new InputAction<KeyEvent>() {
-			@Override
-			public void actionPerformed(KeyEvent event) {
-				int key = event.getKeyCode();
+		Keyboard.getReleasedActions().register("playerMovement",
+				new InputAction<KeyEvent>() {
+					@Override
+					public void actionPerformed(KeyEvent event) {
+						int key = event.getKeyCode();
 
-				if (key == KeyEvent.VK_W || key == KeyEvent.VK_S
-						|| key == KeyEvent.VK_D || key == KeyEvent.VK_A) {
-					setDirection(Direction.NONE);
-				}
-			}
-		});
+						if (key == KeyEvent.VK_W || key == KeyEvent.VK_S
+								|| key == KeyEvent.VK_D || key == KeyEvent.VK_A) {
+							setDirection(Direction.NONE);
+						}
+					}
+				});
 	}
 }

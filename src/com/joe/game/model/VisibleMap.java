@@ -12,6 +12,10 @@ public class VisibleMap {
 	 */
 	private Chunk[] visibleChunks = new Chunk[3 * 3];
 	
+	public VisibleMap(Location location) {
+		load(location);
+	}
+	
 	/**
 	 * Loads the 3 x 3 chunks for the local map
 	 * based on the location.

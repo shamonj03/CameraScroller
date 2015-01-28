@@ -21,14 +21,14 @@ public class World {
 	 */
 	private VisibleMap map;
 	
+	
 	/**
 	 * Things to instantiate when the world is created.
 	 */
 	public void onCreate() {
 		player = new Player();
 		camera = new Camera(player.getLocation(), player.getWidth(), player.getHeight());
-		
-		map.load(player.getLocation());
+		map = new VisibleMap(player.getLocation());
 	}
 
 	/**
