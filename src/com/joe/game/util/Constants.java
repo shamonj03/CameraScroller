@@ -32,5 +32,13 @@ public class Constants {
 	 */
 	public static final MapDefinition MAP_DEFINITION = new MapDefinition();
 	
+	/**
+	 * Creates an instance of the Chunk Definition to use.
+	 */
 	public static final ChunkDefinition CHUNK_DEFINITION = new ChunkDefinition();
+	
+	/**
+	 * Set to true to enable dubugging features.
+	 */
+	public static final boolean DEBUGGING = false;
 }

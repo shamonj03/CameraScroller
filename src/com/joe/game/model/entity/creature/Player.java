@@ -29,8 +29,7 @@ public class Player extends Creature {
 		int screenY = World.getCamera().getPositionYOnScreen(screen,
 				getLocation());
 
-		screen.drawRectangle(RGB16BitInteger.WHITE, screenX, screenY,
-				getWidth(), getHeight());
+		screen.fillCircle(RGB16BitInteger.BLUE, screenX, screenY, getWidth());
 	}
 
 	/**
@@ -47,7 +46,6 @@ public class Player extends Creature {
 		
 		if(localX < 0 ||localY< 0
 			|| localX > 256 || localY > 256) {
-				System.out.println(localX + " " + localY);
 				World.getMap().load(getLocation());
 		}
 	}

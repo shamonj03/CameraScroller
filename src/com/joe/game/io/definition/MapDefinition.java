@@ -33,7 +33,7 @@ public class MapDefinition extends SingleFileDefinition<Integer, MapData> {
 			data.setX(chunkX);
 			data.setY(chunkY);
 
-			set(chunkX + (chunkY * width), data);
+			create(chunkX + (chunkY * width), data);
 
 			chunkX++;
 		}

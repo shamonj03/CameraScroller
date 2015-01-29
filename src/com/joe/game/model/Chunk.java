@@ -9,16 +9,14 @@ import com.joe.game.util.Constants;
 public class Chunk {
 
 	/**
-	 * The map data within the definition.
-	 * This definition contains location of chunks in the
-	 * world.
+	 * The map data within the definition. This definition contains location of
+	 * chunks in the world.
 	 */
 	private MapData mapData;
-	
+
 	/**
-	 * The chunk data in the definition.
-	 * This definition contains the location of
-	 * tiles and such in the chunk.
+	 * The chunk data in the definition. This definition contains the location
+	 * of tiles and such in the chunk.
 	 */
 	private ChunkData chunkData;
 
@@ -32,7 +30,7 @@ public class Chunk {
 
 		if (mapData.getId() == -1)
 			return;
-		
+
 		chunkData = Constants.CHUNK_DEFINITION.retrive(mapData.getId());
 	}
 
@@ -47,16 +45,53 @@ public class Chunk {
 			return;
 
 		drawTiles(screen);
-		drawChunkBorders(screen);
+
+		if (Constants.DEBUGGING) {
+			drawTileBorders(screen);
+			drawChunkBorders(screen);
+		}
 	}
 
 	/**
-	 * Draws the tiles within the chunk.
+	 * Draws the tiles to the screen.
 	 * 
 	 * @param screen
 	 *            The screen to draw to.
 	 */
 	private void drawTiles(Screen screen) {
+		for (int localY = 0; localY < 16; localY++) {
+			for (int localX = 0; localX < 16; localX++) {
+				Tile tile = this.getChunkData().getTiles()[localX
+						+ (localY * 16)];
+
+				int realX = (int) (mapData.getRealX() + tile.getLocation()
+						.getX());
+				int realY = (int) (mapData.getRealY() + tile.getLocation()
+						.getY());
+
+				int screenX = World.getCamera().getPositionXOnScreen(screen,
+						realX);
+				int screenY = World.getCamera().getPositionYOnScreen(screen,
+						realY);
+
+				if (tile.getId() == 1) {
+					screen.fillRectangle(RGB16BitInteger.GRAY, screenX,
+							screenY, Constants.TILE_SIZE, Constants.TILE_SIZE);
+				} else {
+					screen.fillRectangle(RGB16BitInteger.WHITE, screenX,
+							screenY, Constants.TILE_SIZE, Constants.TILE_SIZE);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Draws a border around each tile.
+	 * 
+	 * @param screen
+	 *            The screen to draw to.
+	 */
+	private void drawTileBorders(Screen screen) {
 		for (int localY = 0; localY < Constants.CHUNK_REAL_SIZE; localY += Constants.TILE_SIZE) {
 			for (int localX = 0; localX < Constants.CHUNK_REAL_SIZE; localX += Constants.TILE_SIZE) {
 				int realX = mapData.getRealX() + localX;
@@ -74,7 +109,7 @@ public class Chunk {
 	}
 
 	/**
-	 * Draws a border around the chunk.
+	 * Draws a border around each chunk.
 	 * 
 	 * @param screen
 	 *            The screen to draw to.
@@ -95,7 +130,7 @@ public class Chunk {
 	public MapData getData() {
 		return mapData;
 	}
-	
+
 	/**
 	 * @return the chunk data in the definition.
 	 */
