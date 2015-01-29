@@ -1,7 +1,7 @@
 package com.joe.game.util;
 
 import com.joe.game.io.definition.ChunkDefinition;
-import com.joe.game.io.definition.MapDefinition;
+import com.joe.game.io.definition.WorldDefinition;
 
 public class Constants {
 
@@ -30,7 +30,7 @@ public class Constants {
 	 * Create an instance of Map Definition to use.
 	 * TODO: Maybe move this to game?
 	 */
-	public static final MapDefinition MAP_DEFINITION = new MapDefinition();
+	public static final WorldDefinition MAP_DEFINITION = new WorldDefinition();
 	
 	/**
 	 * Creates an instance of the Chunk Definition to use.

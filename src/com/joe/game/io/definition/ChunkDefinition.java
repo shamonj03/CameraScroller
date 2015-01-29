@@ -15,12 +15,12 @@ public class ChunkDefinition extends OnDemandDefinition<Integer, ChunkData> {
 	}
 
 	@Override
-	public void readData(Integer hash) throws IOException {
+	public ChunkData readData(Integer hash) throws IOException {
 		ChunkData chunk = new ChunkData(hash);
 		
 		readTiles(chunk, hash);
 		
-		create(hash, chunk);
+		return chunk;
 	}
 	
 	private void readTiles(ChunkData chunk, Integer hash) throws IOException {

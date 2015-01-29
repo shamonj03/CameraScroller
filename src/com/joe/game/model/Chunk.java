@@ -3,7 +3,7 @@ package com.joe.game.model;
 import com.joe.engine.graphics.color.RGB16BitInteger;
 import com.joe.engine.graphics.renderable.Screen;
 import com.joe.game.io.data.ChunkData;
-import com.joe.game.io.data.MapData;
+import com.joe.game.io.data.WorldData;
 import com.joe.game.util.Constants;
 
 public class Chunk {
@@ -12,7 +12,7 @@ public class Chunk {
 	 * The map data within the definition. This definition contains location of
 	 * chunks in the world.
 	 */
-	private MapData mapData;
+	private WorldData mapData;
 
 	/**
 	 * The chunk data in the definition. This definition contains the location
@@ -25,7 +25,7 @@ public class Chunk {
 	 * 
 	 * @param mapData
 	 */
-	public Chunk(MapData mapData) {
+	public Chunk(WorldData mapData) {
 		this.mapData = mapData;
 
 		if (mapData.getId() == -1)
@@ -127,7 +127,7 @@ public class Chunk {
 	/**
 	 * @return the map data in the definition.
 	 */
-	public MapData getData() {
+	public WorldData getData() {
 		return mapData;
 	}
 

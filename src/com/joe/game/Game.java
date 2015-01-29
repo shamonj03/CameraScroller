@@ -16,7 +16,7 @@ public class Game implements Engine {
 	public void start() {
 		Frame frame = new Frame("Storm");
 		
-		canvas = new GameCanvas(1024, 1024);
+		canvas = new GameCanvas(500, 500);
 		
 		frame.addWindowListener(new Window());
 		

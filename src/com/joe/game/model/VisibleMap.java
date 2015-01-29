@@ -2,7 +2,8 @@ package com.joe.game.model;
 
 import com.joe.engine.graphics.renderable.Screen;
 import com.joe.engine.model.Location;
-import com.joe.game.io.data.MapData;
+import com.joe.game.io.data.WorldData;
+import com.joe.game.io.definition.WorldDefinition;
 import com.joe.game.util.Constants;
 
 public class VisibleMap {
@@ -36,7 +37,7 @@ public class VisibleMap {
 					continue;
 				}
 
-				MapData data = Constants.MAP_DEFINITION.retrive(chunkX + (chunkY * Constants.MAP_DEFINITION.getWidth()));
+				WorldData data = Constants.MAP_DEFINITION.retrive(chunkX + (chunkY * WorldDefinition.getWidth()));
 				
 				visibleChunks[(xOffset + 1) + ((yOffset + 1) * 3)] = new Chunk(data);
 			}
