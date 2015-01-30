@@ -1,7 +1,6 @@
 package com.joe.game.io.definition;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,9 +9,20 @@ import com.joe.game.io.data.WorldData;
 
 public class WorldDefinition extends Definition<Integer, WorldData> {
 
+	/**
+	 * The width of the world.
+	 */
 	private static int width;
+	
+	/**
+	 * The height of the world.
+	 */
 	private static int height;
 
+	/**
+	 * Create a new world definition and load
+	 * everything in it on creation.
+	 */
 	public WorldDefinition() {
 		try {
 			load();
@@ -61,10 +71,16 @@ public class WorldDefinition extends Definition<Integer, WorldData> {
 		}
 	}
 
+	/**
+	 * @return the width of the world.
+	 */
 	public static int getWidth() {
 		return width;
 	}
 
+	/**
+	 * @return the height of the world.
+	 */
 	public static int getHeight() {
 		return height;
 	}

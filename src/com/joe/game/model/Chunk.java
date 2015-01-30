@@ -2,6 +2,7 @@ package com.joe.game.model;
 
 import com.joe.engine.graphics.color.RGB16BitInteger;
 import com.joe.engine.graphics.renderable.Screen;
+import com.joe.game.GameCanvas;
 import com.joe.game.io.data.ChunkData;
 import com.joe.game.io.data.WorldData;
 import com.joe.game.util.Constants;
@@ -46,7 +47,7 @@ public class Chunk {
 
 		drawTiles(screen);
 
-		if (Constants.DEBUGGING) {
+		if (GameCanvas.getSettings().isDebugging()) {
 			drawTileBorders(screen);
 			drawChunkBorders(screen);
 		}

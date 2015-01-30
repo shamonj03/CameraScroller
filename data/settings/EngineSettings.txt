@@ -1,0 +1,5 @@
+#Fri Jan 30 12:36:32 CST 2015
+bufferStrategyLayers=2
+debugging=false
+targetFPS=60
+showFPS=false

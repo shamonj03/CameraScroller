@@ -1,37 +1,42 @@
 package com.joe.game;
 
 import java.awt.Frame;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import com.joe.engine.Engine;
-import com.joe.engine.input.Window;
+import com.joe.engine.EngineFrame;
 
-public class Game implements Engine {
-	
-	/**
-	 * The canvas to draw to.
-	 */
-	private static GameCanvas canvas;
+public class Game extends EngineFrame<GameCanvas> {
 
 	@Override
-	public void start() {
-		Frame frame = new Frame("Storm");
+	public void setAWTComponenets(Frame frame) {
+		MenuBar menuBar = new MenuBar();
+
+		Menu menu = new Menu("File");
 		
-		canvas = new GameCanvas(500, 500);
-		
-		frame.addWindowListener(new Window());
-		
-		frame.add(canvas);
-		frame.pack();
-		frame.setVisible(true);
-		
-		canvas.start();
-	}
-	
-	/**
-	 * @return the canvas to draw to.
-	 */
-	public static GameCanvas getCanvas() {
-		return canvas;
+		menu.add(exitItem());
+		menuBar.add(menu);
+
+		frame.setMenuBar(menuBar);
 	}
 
+	/**
+	 * Creates a new exit menu item.
+	 * 
+	 * @return the menu item.
+	 */
+	private MenuItem exitItem() {
+		MenuItem menuItem = new MenuItem("Exit");
+
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(1);
+			}
+		});
+		return menuItem;
+	}
 }

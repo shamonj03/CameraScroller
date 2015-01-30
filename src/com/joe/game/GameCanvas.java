@@ -1,23 +1,32 @@
 package com.joe.game;
 
+
 import com.joe.engine.EngineCanvas;
 import com.joe.engine.graphics.renderable.Screen;
+import com.joe.game.graphics.font.MinishFont;
 import com.joe.game.model.World;
 
 @SuppressWarnings("serial")
 public class GameCanvas extends EngineCanvas {
-
 	/**
 	 * The world which everything is drawn in.
 	 */
 	private World world;
+	
+	/**
+	 * create the Minish Font.
+	 */
+	public static final MinishFont MINISH_FONT = new MinishFont();
 
-	public GameCanvas(int width, int height) {
-		super(width, height);
+	/**
+	 * Create a new canvas to draw graphics to.
+	 */
+	public GameCanvas() {
+		super(500, 500);
 	}
 
 	@Override
-	public void startUp() {
+	public void onStartUp() {
 		world = new World();
 		world.onCreate();
 	}
