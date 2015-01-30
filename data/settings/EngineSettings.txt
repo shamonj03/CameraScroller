@@ -2,4 +2,4 @@
 bufferStrategyLayers=2
 debugging=false
 targetFPS=60
-showFPS=false
+showFPS=true

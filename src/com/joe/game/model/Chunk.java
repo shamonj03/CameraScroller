@@ -1,7 +1,7 @@
 package com.joe.game.model;
 
 import com.joe.engine.graphics.color.RGB16BitInteger;
-import com.joe.engine.graphics.renderable.Screen;
+import com.joe.engine.graphics.renderable.DrawingArea;
 import com.joe.game.GameCanvas;
 import com.joe.game.io.data.ChunkData;
 import com.joe.game.io.data.WorldData;
@@ -41,7 +41,7 @@ public class Chunk {
 	 * @param screen
 	 *            The screen to draw to.
 	 */
-	public void draw(Screen screen) {
+	public void draw(DrawingArea screen) {
 		if (mapData.getId() == -1)
 			return;
 
@@ -59,7 +59,7 @@ public class Chunk {
 	 * @param screen
 	 *            The screen to draw to.
 	 */
-	private void drawTiles(Screen screen) {
+	private void drawTiles(DrawingArea screen) {
 		for (int localY = 0; localY < 16; localY++) {
 			for (int localX = 0; localX < 16; localX++) {
 				Tile tile = this.getChunkData().getTiles()[localX
@@ -92,7 +92,7 @@ public class Chunk {
 	 * @param screen
 	 *            The screen to draw to.
 	 */
-	private void drawTileBorders(Screen screen) {
+	private void drawTileBorders(DrawingArea screen) {
 		for (int localY = 0; localY < Constants.CHUNK_REAL_SIZE; localY += Constants.TILE_SIZE) {
 			for (int localX = 0; localX < Constants.CHUNK_REAL_SIZE; localX += Constants.TILE_SIZE) {
 				int realX = mapData.getRealX() + localX;
@@ -115,7 +115,7 @@ public class Chunk {
 	 * @param screen
 	 *            The screen to draw to.
 	 */
-	private void drawChunkBorders(Screen screen) {
+	private void drawChunkBorders(DrawingArea screen) {
 		int screenX = World.getCamera().getPositionXOnScreen(screen,
 				mapData.getRealX());
 		int screenY = World.getCamera().getPositionYOnScreen(screen,

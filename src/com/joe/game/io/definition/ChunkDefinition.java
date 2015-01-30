@@ -23,6 +23,13 @@ public class ChunkDefinition extends OnDemandDefinition<Integer, ChunkData> {
 		return chunk;
 	}
 	
+	/**
+	 * Load the tiles into the game.
+	 * 
+	 * @param chunk
+	 * @param hash
+	 * @throws IOException
+	 */
 	private void readTiles(ChunkData chunk, Integer hash) throws IOException {
 		File file = new File(definitionFolder + hash + "/tiles.txt");
 		

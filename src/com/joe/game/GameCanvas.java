@@ -2,7 +2,9 @@ package com.joe.game;
 
 
 import com.joe.engine.EngineCanvas;
-import com.joe.engine.graphics.renderable.Screen;
+import com.joe.engine.graphics.renderable.DrawingArea;
+import com.joe.engine.graphics.renderable.ParentInterface;
+import com.joe.game.graphics.TestInterface;
 import com.joe.game.graphics.font.MinishFont;
 import com.joe.game.model.World;
 
@@ -17,18 +19,22 @@ public class GameCanvas extends EngineCanvas {
 	 * create the Minish Font.
 	 */
 	public static final MinishFont MINISH_FONT = new MinishFont();
+	
+	private ParentInterface currentInterface;
 
 	/**
 	 * Create a new canvas to draw graphics to.
 	 */
 	public GameCanvas() {
-		super(500, 500);
+		super(496, 496);
 	}
 
 	@Override
 	public void onStartUp() {
 		world = new World();
 		world.onCreate();
+		
+		currentInterface = new TestInterface();
 	}
 
 	@Override
@@ -37,8 +43,10 @@ public class GameCanvas extends EngineCanvas {
 	}
 
 	@Override
-	public void drawScreen(Screen screen) {
+	public void drawScreen(DrawingArea screen) {
 		world.draw(screen);
+		
+		currentInterface.displayInterface(screen);
 	}
 
 	/**

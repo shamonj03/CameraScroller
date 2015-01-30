@@ -1,6 +1,6 @@
 package com.joe.game.model;
 
-import com.joe.engine.graphics.renderable.Screen;
+import com.joe.engine.graphics.renderable.DrawingArea;
 import com.joe.engine.model.Location;
 import com.joe.game.io.data.WorldData;
 import com.joe.game.io.definition.WorldDefinition;
@@ -50,7 +50,7 @@ public class VisibleMap {
 	 * @param screen
 	 * 	The screen to draw to.
 	 */
-	public void draw(Screen screen) {
+	public void draw(DrawingArea screen) {
 		for(Chunk chunk : visibleChunks) {
 			if(chunk == null)
 				continue;

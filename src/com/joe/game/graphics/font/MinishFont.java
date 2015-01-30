@@ -2,11 +2,11 @@ package com.joe.game.graphics.font;
 
 import java.io.File;
 
-import com.joe.engine.graphics.EngineFont;
+import com.joe.engine.graphics.CustomFont;
 import com.joe.engine.graphics.renderable.sprite.SpriteSheet;
 import com.joe.engine.util.EngineConstants;
 
-public class MinishFont extends EngineFont {
+public class MinishFont extends CustomFont {
 
 	/**
 	 * Create a new font based on the minish cap font sheet.

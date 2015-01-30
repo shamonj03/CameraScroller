@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 import com.joe.engine.EngineFrame;
 
-public class Game extends EngineFrame<GameCanvas> {
+public class GameFrame extends EngineFrame<GameCanvas> {
 
 	@Override
 	public void setAWTComponenets(Frame frame) {

@@ -3,7 +3,7 @@ package com.joe.game.model.entity.creature;
 import java.awt.event.KeyEvent;
 
 import com.joe.engine.graphics.color.RGB16BitInteger;
-import com.joe.engine.graphics.renderable.Screen;
+import com.joe.engine.graphics.renderable.DrawingArea;
 import com.joe.engine.input.InputAction;
 import com.joe.engine.input.Keyboard;
 import com.joe.engine.model.Direction;
@@ -23,7 +23,7 @@ public class Player extends Creature {
 	}
 
 	@Override
-	public void draw(Screen screen) {
+	public void draw(DrawingArea screen) {
 		int screenX = World.getCamera().getPositionXOnScreen(screen,
 				getLocation());
 		int screenY = World.getCamera().getPositionYOnScreen(screen,

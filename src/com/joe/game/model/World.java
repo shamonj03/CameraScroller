@@ -1,6 +1,6 @@
 package com.joe.game.model;
 
-import com.joe.engine.graphics.renderable.Screen;
+import com.joe.engine.graphics.renderable.DrawingArea;
 import com.joe.engine.model.Camera;
 import com.joe.game.model.entity.creature.Player;
 
@@ -38,7 +38,7 @@ public class World {
 	 * @param screen
 	 * 		The screen to draw to.
 	 */
-	public void draw(Screen screen) {
+	public void draw(DrawingArea screen) {
 		map.draw(screen);
 		player.draw(screen);
 	}
