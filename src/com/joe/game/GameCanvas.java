@@ -3,9 +3,9 @@ package com.joe.game;
 
 import com.joe.engine.EngineCanvas;
 import com.joe.engine.graphics.renderable.DrawingArea;
-import com.joe.engine.graphics.renderable.ParentInterface;
-import com.joe.game.graphics.TestInterface;
+import com.joe.engine.graphics.renderable.inter.base.ParentInterface;
 import com.joe.game.graphics.font.MinishFont;
+import com.joe.game.graphics.inter.TestInterface;
 import com.joe.game.model.World;
 
 @SuppressWarnings("serial")
